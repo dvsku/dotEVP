@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="dotEVP.GUI.Views.UnpackView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dvsku="http://dvsku.com/winfx/xaml/controls"
+             xmlns:viewmodels="clr-namespace:dotEVP.GUI.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:UnpackViewModel}"
+             mc:Ignorable="d" d:DesignWidth="800" Height="200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <dvsku:LabeledTextBox TextBoxHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center" 
+                              LabelContent="INPUT EVP" Margin="6,6,130,0" IsReadOnly="True" Text="{Binding Input}"></dvsku:LabeledTextBox>
+        <Button Height="25" Command="{Binding SelectInput}" IsEnabled="{Binding CanExecute}" Content="Select" Margin="0,25,6,0" 
+                VerticalAlignment="Top" HorizontalAlignment="Right" Width="119"/>
+        <dvsku:LabeledTextBox TextBoxHeight="25" VerticalAlignment="Top" VerticalContentAlignment="Center" 
+                              LabelContent="OUTPUT FOLDER" Margin="6,61,130,0" IsReadOnly="True" Text="{Binding Output}"></dvsku:LabeledTextBox>
+        <Button Height="25" Command="{Binding SelectOutput}" IsEnabled="{Binding CanExecute}" Content="Select" Margin="0,80,6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="119"/>
+        <Button Command="{Binding Unpack}" Content="Unpack" IsEnabled="{Binding CanExecute}" Margin="130,116,130,10" />
+        <ProgressBar Value="{Binding ProgressBarValue}" Height="25" Margin="0,5,0,0" Grid.Row="1"/>
+        <TextBlock Text="{Binding ProgressBarText}" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,3,0,0" />
+    </Grid>
+</UserControl>
